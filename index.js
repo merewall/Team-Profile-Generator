@@ -8,6 +8,8 @@ const Employee = require('./lib/employee');
 const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern');
 const Manager = require('./lib/manager');
+const generateHTML = require('./lib/generateHTML');
+
 
 // An array of questions that will render in the command line for the user's input
 const questions = [
@@ -20,7 +22,7 @@ const questions = [
           if (mgrNameInput) {
               return true;
           } else {
-              console.error("\x1b[31m","\nYou must provide a name for the team manager!");
+              console.log("\x1b[31m","\nYou must provide a name for the team manager!");
               return false;
           }
       }
@@ -32,15 +34,22 @@ const questions = [
       message: "Enter the team manager's employee ID number:",
       validate: (mgrIDInput) => {
         if (!mgrIDInput) {
-            console.error("\x1b[31m","\nYou must provide an employee ID number for the team manager!");
+            console.log("\x1b[31m","\nYou must provide an employee ID number for the team manager!");
             return false;
         } else if (typeof mgrIDInput !== 'number') {
-            console.error("\x1b[31m",'\nThe employee ID must be a number!');
+            console.log("\x1b[31m",'\nThe employee ID must be a number!');
             return false;
         } else {
             return true;
         }
-    }
+    },
+    filter: (mgrIDInput) => {
+        if (isNaN(mgrIDInput)) {
+           return '' 
+        } else {
+            return mgrIDInput
+        }
+    },
     },
     // Prompt for team manager email
     {
@@ -49,15 +58,15 @@ const questions = [
       message: "Enter the team manager's email address:",
       validate: (mgrEmailInput) => {
         if (!mgrEmailInput) {
-            console.error("\x1b[31m","\nYou must provide an email address for the team manager!");
+            console.log("\x1b[31m","\nYou must provide an email address for the team manager!");
             return false;
         } else if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(mgrEmailInput)) {
             return true;
         } else {
-            console.error("\x1b[31m","\nYou have entered an invalid email address!");
+            console.log("\x1b[31m","\nYou have entered an invalid email address!");
             return false;
         }
-    }
+        }
     },
     // Prompt for team manager office number
     {
@@ -66,15 +75,24 @@ const questions = [
       message: "Enter the team manager's office number:",
       validate: (mgrOfficeInput) => {
         if (!mgrOfficeInput) {
-            console.error("\x1b[31m","\nYou must provide an office number!");
+            console.log("\x1b[31m",'\nYou must provide an office number!');
             return false;
         } else if (typeof mgrOfficeInput !== 'number') {
-            console.error('\nThe office number must be a number!');
+            console.log('\nThe office number must be a number!');
             return false;
         } else {
             return true
         }
-    }
+    },
+        filter: (officeInput) => {
+            if (isNaN(officeInput)) {
+            return '' 
+            } else {
+                return officeInput
+            }
+    },
+        
+
     },
     // Prompt for adding a team member
     {
@@ -98,7 +116,7 @@ const questions = [
                   if (nameInput) {
                       return true;
                   } else {
-                      console.error("\x1b[31m","\nYou must provide a name for the employee!");
+                      console.log("\x1b[31m","\nYou must provide a name for the employee!");
                       return false;
                   }
               }
@@ -111,15 +129,23 @@ const questions = [
                   when: (answers) => answers.role === 'Engineer' || answers.role === 'Intern',
                   validate: (idInput) => {
                       if (!idInput) {
-                          console.error("\x1b[31m","\nYou must provide an employee ID number!");
+                          console.log("\x1b[31m","\nYou must provide an employee ID number!");
                           return false;
                       } else if (typeof idInput !== 'number') {
-                          console.error("\x1b[31m",'\nThe employee ID must be a number!');
+                          console.log("\x1b[31m",'\nThe employee ID must be a number!');
                           return false;
                       } else {
                           return true
                       }
-                  }
+                    },
+                    filter: (idInput) => {
+                        if (isNaN(idInput)) {
+                        return '' 
+                        } else {
+                            return idInput
+                        }
+                    },
+                  
                 },
                 // Prompt for employee email
               {
@@ -129,12 +155,12 @@ const questions = [
                   when: (answers) => answers.role === 'Engineer' || answers.role === 'Intern',
                   validate: (emailInput) => {
                     if (!emailInput) {
-                        console.error("\x1b[31m","\nYou must provide an employee email address!");
+                        console.log("\x1b[31m","\nYou must provide an employee email address!");
                         return false;
                     } else if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(emailInput)) {
                         return true;
                     } else {
-                        console.error("\x1b[31m","\nYou have entered an invalid email address!");
+                        console.log("\x1b[31m","\nYou have entered an invalid email address!");
                         return false;
                     }
                 }
@@ -149,7 +175,7 @@ const questions = [
                       if (githubInput) {
                           return true;
                       } else {
-                          console.error("\x1b[31m","\nYou must enter an employee GitHub user name!");
+                          console.log("\x1b[31m","\nYou must enter an employee GitHub user name!");
                           return false;
                       }
                   }
@@ -164,7 +190,7 @@ const questions = [
                       if (schoolInput) {
                           return true;
                       } else {
-                          console.error("\x1b[31m","\nYou must provide the intern's school!");
+                          console.log("\x1b[31m","\nYou must provide the intern's school!");
                           return false;
                       }
                   }
@@ -174,11 +200,11 @@ const questions = [
 ];
 
 // Function to write HTML file
-function writeToFile(fileName, data) {
-    fs.writeFile(fileName, data, (err) =>
-        err ? console.error("\x1b[31m", err) : console.log('Successfully created README.md!')
-    );
-}
+// function writeToFile(fileName, data) {
+//     fs.writeFile(fileName, data, (err) =>
+//         err ? console.error("\x1b[31m", err) : console.log('Successfully created README.md!')
+//     );
+// }
 
 // Function to initialize app
 function init() {
@@ -206,6 +232,8 @@ function init() {
             const managerOffice = answers.mgrOffice;
 
             const mgr = new Manager (manager ,managerID, managerEmail, managerOffice)
+            // console.log(mgr)
+            generateHTML.generateMgrHTML(mgr);
             // console.log(mgr.name);
             // console.log(answers.newEmployee);
 
@@ -216,32 +244,43 @@ function init() {
                 // console.log(answers.newEmployee.length)
                 for (i = 0; i < answers.newEmployee.length; i++) {
                     if(answers.newEmployee[i].role === "Engineer") {
-                        let emp = new Engineer (answers.newEmployee[i].name, answers.newEmployee[i].id, answers.newEmployee[i].email, answers.newEmployee[i].github);
-                        // instead of console log... have a generate HTML function
+                        let eng = new Engineer (answers.newEmployee[i].name, answers.newEmployee[i].id, answers.newEmployee[i].email, answers.newEmployee[i].github);
+                        
+                        // instead of console log... have a generate HTML function - but these work
                         // console.log(emp)
-                        console.log(emp.getName())
-                        console.log(emp.getId())
-                        console.log(emp.getEmail())
-                        console.log(emp.getGitHub())
-                        console.log(emp.getRole())
+                        // console.log(emp.getName())
+                        // console.log(emp.getId())
+                        // console.log(emp.getEmail())
+                        // console.log(emp.getGitHub())
+                        // console.log(emp.getRole())
+
+                        // not working
+                        generateHTML.generateEngCards(eng)
+                        
                     } else {
-                        let emp = new Intern (answers.newEmployee[i].name, answers.newEmployee[i].id, answers.newEmployee[i].email, answers.newEmployee[i].school);
+                        let int = new Intern (answers.newEmployee[i].name, answers.newEmployee[i].id, answers.newEmployee[i].email, answers.newEmployee[i].school);
                         // instead of console log... have a generate HTML function
                         // console.log(emp)
-                        console.log(emp.getName())
-                        console.log(emp.getId())
-                        console.log(emp.getEmail())
-                        console.log(emp.getRole())
-                        console.log(emp.getSchool())
+                        // console.log(emp.getName())
+                        // console.log(emp.getId())
+                        // console.log(emp.getEmail())
+                        // console.log(emp.getRole())
+                        // console.log(emp.getSchool())
+                        generateHTML.generateIntCards(int)
                     }
                 }
             }
 
+            generateHTML.generateEndHTML()
+            // console.log(answers.newEmployee.length);
             // const mgr = new Manager (answer.mgrName,);
             // console.log(tink.getName());
             // console.log(tink.getId());
             // console.log(tink.getEmail());
             // console.log(tink.getRole());
+            fs.writeFile('./dist/index.html', generateHTML.generateHTML(), (err) => {
+                err ? console.error(err) : console.log('html created!');
+            });            
         })
     }, 2500);
 }
