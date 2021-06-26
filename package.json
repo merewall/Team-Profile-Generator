@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/merewall/Team-Profile-Generator#readme",
   "dependencies": {
-    "inquirer": "^8.1.1"
+    "inquirer": "^8.1.1",
+    "inquirer-loop": "^0.3.0"
   }
 }
