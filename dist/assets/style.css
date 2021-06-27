@@ -1,0 +1,70 @@
+body {
+    font-family: 'Raleway', sans-serif;
+    color: white;
+}
+
+.container {
+    margin-bottom: 40px;
+}
+
+nav {
+    height: 150px;
+    margin-bottom: 40px;
+}
+
+nav h1 {
+    margin: 0px;    
+}
+
+#nav-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.row .col.l4 {
+    margin-left: 0px;
+}
+
+.card .card-title {
+    font-weight: 600;
+    text-align: center;
+}
+
+.card-content p {
+    font-size: 18px;
+    padding-top: 10px;
+    text-align: center;
+}
+
+.card-action {
+    height: 180px;
+    font-size: 16px;
+}
+
+.card-action div {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: solid 1px white;
+}
+
+.card-action div span {
+    padding-right: 8px;
+    margin-left: 8px;
+}
+
+.card-action div a {
+    margin-left: 8px;
+    font-size: 14px;
+}
+
+footer {
+    height: 50px;
+    background-color: #ee6e73;
+}
