@@ -4,7 +4,7 @@ const inquirer = require('inquirer');
 inquirer.registerPrompt("loop", require("inquirer-loop")(inquirer));
 
 const fs = require('fs');
-const Employee = require('./lib/employee');
+
 const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern');
 const Manager = require('./lib/manager');
@@ -220,64 +220,37 @@ function init() {
         inquirer.prompt(questions)
         // Use the user's answers to generate the HTML and output it to a new directory
         .then((answers) => {
-            // const readmeContent = generateMarkdown(answers);
-            // writeToFile('./sample-readme/README.md', readmeContent);
-            // console.log(answers);
-            // console.log(answers.mgrName);
-            // console.log(answers.newEmployee[0].name);
-
+           
             const manager = answers.mgrName;
             const managerID = answers.mgrID;
             const managerEmail = answers.mgrEmail;
             const managerOffice = answers.mgrOffice;
 
             const mgr = new Manager (manager ,managerID, managerEmail, managerOffice)
-            // console.log(mgr)
+            
             generateHTML.generateMgrHTML(mgr);
-            // console.log(mgr.name);
-            // console.log(answers.newEmployee);
 
             // check if there are employees other than the manager added
             if(!answers.newEmployee) {
                 console.log('nope!')
             } else {
-                // console.log(answers.newEmployee.length)
+                
                 for (i = 0; i < answers.newEmployee.length; i++) {
                     if(answers.newEmployee[i].role === "Engineer") {
                         let eng = new Engineer (answers.newEmployee[i].name, answers.newEmployee[i].id, answers.newEmployee[i].email, answers.newEmployee[i].github);
                         
-                        // instead of console log... have a generate HTML function - but these work
-                        // console.log(emp)
-                        // console.log(emp.getName())
-                        // console.log(emp.getId())
-                        // console.log(emp.getEmail())
-                        // console.log(emp.getGitHub())
-                        // console.log(emp.getRole())
-
-                        // not working
                         generateHTML.generateEngCards(eng)
                         
                     } else {
                         let int = new Intern (answers.newEmployee[i].name, answers.newEmployee[i].id, answers.newEmployee[i].email, answers.newEmployee[i].school);
-                        // instead of console log... have a generate HTML function
-                        // console.log(emp)
-                        // console.log(emp.getName())
-                        // console.log(emp.getId())
-                        // console.log(emp.getEmail())
-                        // console.log(emp.getRole())
-                        // console.log(emp.getSchool())
+                       
                         generateHTML.generateIntCards(int)
                     }
                 }
             }
 
             generateHTML.generateEndHTML()
-            // console.log(answers.newEmployee.length);
-            // const mgr = new Manager (answer.mgrName,);
-            // console.log(tink.getName());
-            // console.log(tink.getId());
-            // console.log(tink.getEmail());
-            // console.log(tink.getRole());
+            
             fs.writeFile('./dist/index.html', generateHTML.generateHTML(), (err) => {
                 err ? console.error(err) : console.log('html created!');
             });            

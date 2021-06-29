@@ -1,6 +1,6 @@
-const Employee = require("../lib/manager");
+const Employee = require("../lib/generateHTML");
 
-describe("Manager", () => {
+describe("generateHTML", () => {
     describe("Initialization", () => {
         // it("should return an object containing a 'name' property when called with the 'new' keyword", () => {
         //     const obj = new Employee();
@@ -45,11 +45,11 @@ describe("Manager", () => {
         // ask jim if need to add test for empty strings/properties of classes if we have that validation in inquirer prompts
     });
 
-    describe("getOffice", () => {
+    // describe("getGitHub", () => {
 
-    });
+    // });
 
-    describe("getRole", () => {
+    // describe("getRole", () => {
 
-    });
+    // });
 })
