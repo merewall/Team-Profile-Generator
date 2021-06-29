@@ -1,28 +1,13 @@
 const Employee = require("../lib/employee");
 
-describe("Employee", () => {
+describe("Employee class", () => {
     describe("Initialization", () => {
-        it("should return an object containing a 'name' property when called with the 'new' keyword", () => {
+        it("should return an object containing properties for 'name', 'id', 'email', and 'role' properties when called with the 'new' keyword", () => {
             const obj = new Employee();
 
             expect("name" in obj).toEqual(true);
-        });
-
-        it("should return an object containing a 'id' property when called with the 'new' keyword", () => {
-            const obj = new Employee();
-
             expect("id" in obj).toEqual(true);
-        });
-
-        it("should return an object containing a 'email' property when called with the 'new' keyword", () => {
-            const obj = new Employee();
-
             expect("email" in obj).toEqual(true);
-        });
-
-        it("should return an object containing a 'role' property when called with the 'new' keyword", () => {
-            const obj = new Employee();
-
             expect("role" in obj).toEqual(true);
         });
 
@@ -41,23 +26,45 @@ describe("Employee", () => {
             expect(obj.role).toEqual('Employee');
         });
 
-        // it statements for if missing inputs ie name or id or email
-        // ask jim if need to add test for empty strings/properties of classes if we have that validation in inquirer prompts
     });
 
-    describe("getName", () => {
+    describe("getName method of Employee class", () => {
 
-    });
+        it("should return the value of the 'name' property of that instance of Employee", () => {
+            const obj = new Employee('Meredith', '3', 'me@me.com');
 
-    describe("getId", () => {
-
-    });
-
-    describe("getEmail", () => {
+            expect(obj.getName()).toEqual('Meredith');
+        });
 
     });
 
-    describe("getRole", () => {
+    describe("getId method of Employee class", () => {
+
+        it("should return the value of the 'id' property of that instance of Employee", () => {
+            const obj = new Employee('Meredith', '3', 'me@me.com');
+
+            expect(obj.getId()).toEqual('3');
+        });
+
+    });
+
+    describe("getEmail method of Employee class", () => {
+
+        it("should return the value of the 'email' property of that instance of Employee", () => {
+            const obj = new Employee('Meredith', '3', 'me@me.com');
+
+            expect(obj.getEmail()).toEqual('me@me.com');
+        });
+
+    });
+
+    describe("getRole method of Employee class", () => {
+
+        it("should return the default value of the 'role' property of that instance of Employee", () => {
+            const obj = new Employee('Meredith', '3', 'me@me.com');
+
+            expect(obj.getRole()).toEqual('Employee');
+        });
 
     });
 })

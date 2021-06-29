@@ -1,55 +1,70 @@
-const Employee = require("../lib/generateHTML");
+const generateHTML = require("../lib/generateHTML");
+const generateMgrHTML = require("../lib/generateHTML");
+const generateEngCards = require("../lib/generateHTML");
+const generateIntCards = require("../lib/generateHTML");
+const generateEndHTML = require("../lib/generateHTML");
+const Employee = require("../lib/employee");
+const Manager = require("../lib/manager");
+const Intern = require("../lib/intern");
+const Engineer = require("../lib/engineer");
 
 describe("generateHTML", () => {
-    describe("Initialization", () => {
-        // it("should return an object containing a 'name' property when called with the 'new' keyword", () => {
-        //     const obj = new Employee();
+    describe("generateMgrHTML method", () => {
 
-        //     expect("name" in obj).toEqual(true);
-        // });
+        it("should push a string of HTML as a new item to the array of htmlString with 1 existing string, given an intance of the Manager class", () => {
+            const obj = new Manager("Meredith", "3", "me@me.com", "101");
+            
+            const newHTMLString = generateHTML.generateMgrHTML(obj);
 
-        // it("should return an object containing a 'id' property when called with the 'new' keyword", () => {
-        //     const obj = new Employee();
-
-        //     expect("id" in obj).toEqual(true);
-        // });
-
-        // it("should return an object containing a 'email' property when called with the 'new' keyword", () => {
-        //     const obj = new Employee();
-
-        //     expect("email" in obj).toEqual(true);
-        // });
-
-        // it("should return an object containing a 'role' property when called with the 'new' keyword", () => {
-        //     const obj = new Employee();
-
-        //     expect("role" in obj).toEqual(true);
-        // });
-
-        // it("should set 'name', 'id', and 'email' when created", () => {
-   
-        //     const obj = new Employee('Meredith','3','me@me.com');
-
-        //     expect(obj.name).toEqual('Meredith');
-        //     expect(obj.id).toEqual('3');
-        //     expect(obj.email).toEqual('me@me.com');
-        // });
+            expect(newHTMLString.length).toBe(2);
+        });
         
-        // it("should default 'role' to 'Employee'", () => {
-        //     const obj = new Employee();
-
-        //     expect(obj.role).toEqual('Employee');
-        // });
-
-        // it statements for if missing inputs ie name or id or email
-        // ask jim if need to add test for empty strings/properties of classes if we have that validation in inquirer prompts
     });
 
-    // describe("getGitHub", () => {
+    describe("generateIntCards method", () => {
 
-    // });
+        it("should push a string of HTML as a new item to the array of htmlString with 2 existing strings, given an intance of the Intern class", () => {
+            const obj = new Intern("Meredith", "3", "me@me.com", "Princeton University");
+            
+            const newHTMLString = generateHTML.generateIntCards(obj);
 
-    // describe("getRole", () => {
+            expect(newHTMLString.length).toBe(3);
+        });
 
-    // });
+    });
+
+    describe("generateEngCards method", () => {
+
+        it("should push a string of HTML as a new item to the array of htmlString with 3 existing strings, given an intance of the Engineer class", () => {
+            const obj = new Engineer("Meredith", "3", "me@me.com", "merewall");
+            
+            const newHTMLString = generateHTML.generateEngCards(obj);
+
+            expect(newHTMLString.length).toBe(4);
+        });
+
+    });
+
+    describe("generateEndHTML method", () => {
+
+        it("should push a string of HTML as a new item to the array of htmlString with 4 existing strings", () => {
+
+            const newHTMLString = generateHTML.generateEndHTML();
+
+            expect(newHTMLString.length).toBe(5);
+        });
+
+    });
+
+    describe("generateHTML method", () => {
+
+        it("should join the htmlString array to become a single string", () => {
+
+            const newHTMLString = generateHTML.generateHTML();
+
+            expect(typeof newHTMLString).toEqual("string");
+        });
+
+    });
+
 })

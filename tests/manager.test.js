@@ -1,55 +1,60 @@
-const Employee = require("../lib/manager");
+const Manager = require("../lib/manager")
+const Employee = require("../lib/employee");
 
 describe("Manager", () => {
     describe("Initialization", () => {
-        // it("should return an object containing a 'name' property when called with the 'new' keyword", () => {
-        //     const obj = new Employee();
 
-        //     expect("name" in obj).toEqual(true);
-        // });
+        it("should return an object that is an instance of Employee", () => {
+            const obj = new Manager();
 
-        // it("should return an object containing a 'id' property when called with the 'new' keyword", () => {
-        //     const obj = new Employee();
+            expect(obj).toBeInstanceOf(Employee);
+        });
 
-        //     expect("id" in obj).toEqual(true);
-        // });
+        it("should return an object containing properties for 'name', 'id', 'email', 'officeNumber', 'role' when called with the 'new' keyword", () => {
+            const obj = new Manager();
 
-        // it("should return an object containing a 'email' property when called with the 'new' keyword", () => {
-        //     const obj = new Employee();
+            expect("name" in obj).toEqual(true);
+            expect("id" in obj).toEqual(true);
+            expect("email" in obj).toEqual(true);
+            expect("officeNumber" in obj).toEqual(true);
+            expect("role" in obj).toEqual(true);
+        });
 
-        //     expect("email" in obj).toEqual(true);
-        // });
-
-        // it("should return an object containing a 'role' property when called with the 'new' keyword", () => {
-        //     const obj = new Employee();
-
-        //     expect("role" in obj).toEqual(true);
-        // });
-
-        // it("should set 'name', 'id', and 'email' when created", () => {
+        it("should set 'name', 'id', 'email', and 'officeNumber' when created", () => {
    
-        //     const obj = new Employee('Meredith','3','me@me.com');
+            const obj = new Manager('Meredith','3','me@me.com', '101');
 
-        //     expect(obj.name).toEqual('Meredith');
-        //     expect(obj.id).toEqual('3');
-        //     expect(obj.email).toEqual('me@me.com');
-        // });
+            expect(obj.name).toEqual('Meredith');
+            expect(obj.id).toEqual('3');
+            expect(obj.email).toEqual('me@me.com');
+            expect(obj.officeNumber).toEqual('101');
+        });
         
-        // it("should default 'role' to 'Employee'", () => {
-        //     const obj = new Employee();
+        it("should have the default 'role' of 'Employee'", () => {
+            const obj = new Manager();
 
-        //     expect(obj.role).toEqual('Employee');
-        // });
-
-        // it statements for if missing inputs ie name or id or email
-        // ask jim if need to add test for empty strings/properties of classes if we have that validation in inquirer prompts
-    });
-
-    describe("getOffice", () => {
+            expect(obj.role).toEqual('Employee');
+        });
 
     });
 
-    describe("getRole", () => {
+    describe("getOffice method of Manager class", () => {
+
+        it("should return the value of the 'officeNumber' property of that instance of Manager", () => {
+            const obj = new Manager('Meredith', '3', 'me@me.com', '101');
+
+            expect(obj.getOffice()).toEqual('101');
+        });
+
+    });
+
+    describe("getRole method of Manager class", () => {
+
+        it("should return the override value of 'Manager' for the 'role' property of that instance of Manager", () => {
+            const obj = new Manager('Meredith', '3', 'me@me.com', '101');
+
+            expect(obj.getRole()).toEqual('Manager');
+        });
 
     });
 })
