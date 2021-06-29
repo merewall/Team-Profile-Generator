@@ -231,10 +231,8 @@ function init() {
             generateHTML.generateMgrHTML(mgr);
 
             // check if there are employees other than the manager added
-            if(!answers.newEmployee) {
-                console.log('nope!')
-            } else {
-                
+            if(answers.newEmployee) {
+
                 for (i = 0; i < answers.newEmployee.length; i++) {
                     if(answers.newEmployee[i].role === "Engineer") {
                         let eng = new Engineer (answers.newEmployee[i].name, answers.newEmployee[i].id, answers.newEmployee[i].email, answers.newEmployee[i].github);
@@ -246,13 +244,14 @@ function init() {
                        
                         generateHTML.generateIntCards(int)
                     }
-                }
-            }
+                };
+                
+            };     
 
             generateHTML.generateEndHTML()
             
             fs.writeFile('./dist/index.html', generateHTML.generateHTML(), (err) => {
-                err ? console.error(err) : console.log('html created!');
+                err ? console.error(err) : console.log('Successfully created HTML!');
             });            
         })
     }, 2500);

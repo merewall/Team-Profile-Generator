@@ -32,36 +32,35 @@ A command-line application that generates an HTML page of your team's informatio
   
   The following acceptance criteria was used to guide the development of this project:
   
-    - [x] GIVEN a command-line application that accepts user input
-    - [x] WHEN I am prompted for my team members and their information
-    - [x] THEN an HTML file is generated that displays a nicely formatted team roster based on user input
-    - [x] WHEN I click on an email address in the HTML
-    - [x] THEN my default email program opens and populates the TO field of the email with the address
-    - [x] WHEN I click on the GitHub username
-    - [x] THEN that GitHub profile opens in a new tab
-    - [x] WHEN I start the application
-    - [x] THEN I am prompted to enter the team manager’s name, employee ID, email address, and office number
-    - [x] WHEN I enter the team manager’s name, employee ID, email address, and office number
-    - [x] THEN I am presented with a menu with the option to add an engineer or an intern or to finish building my team
-    - [x] WHEN I select the engineer option
-    - [x] THEN I am prompted to enter the engineer’s name, ID, email, and GitHub username, and I am taken back to the menu
-    - [x] WHEN I select the intern option
-    - [x] THEN I am prompted to enter the intern’s name, ID, email, and school, and I am taken back to the menu
-    - [x] WHEN I decide to finish building my team
-    - [x] THEN I exit the application, and the HTML is generated
+- [x] GIVEN a command-line application that accepts user input
+- [x] WHEN I am prompted for my team members and their information
+- [x] THEN an HTML file is generated that displays a nicely formatted team roster based on user input
+- [x] WHEN I click on an email address in the HTML
+- [x] THEN my default email program opens and populates the TO field of the email with the address
+- [x] WHEN I click on the GitHub username
+- [x] THEN that GitHub profile opens in a new tab
+- [x] WHEN I start the application
+- [x] THEN I am prompted to enter the team manager’s name, employee ID, email address, and office number
+- [x] WHEN I enter the team manager’s name, employee ID, email address, and office number
+- [x] THEN I am presented with a menu with the option to add an engineer or an intern or to finish building my team
+- [x] WHEN I select the engineer option
+- [x] THEN I am prompted to enter the engineer’s name, ID, email, and GitHub username, and I am taken back to the menu
+- [x] WHEN I select the intern option
+- [x] THEN I am prompted to enter the intern’s name, ID, email, and school, and I am taken back to the menu
+- [x] WHEN I decide to finish building my team
+- [x] THEN I exit the application, and the HTML is generated
   ## INSTALLATION
 
   1. Fork the [repository](https://github.com/merewall/Team-Profile-Generator) from [GitHub](https://github.com/) to your profile.
   2. Clone the repository down to your local machine in command-line using: `git clone`.
-  3. Node.js is required to run this application. Click [here](#installing-nodejs) for instructrions on installing Node.js.
+  3. Node.js is required to run this application. Click [here](#installing-nodejs) for instructions on installing Node.js.
   4. Install the [inquirer package](https://www.npmjs.com/package/inquirer) to your cloned directory in command-line using: `npm install inquirer`.
   5. Install the [inquirer loop package](https://www.npmjs.com/package/inquirer-loop) to your cloned directory in command-line using: `npm install --save inquirer-loop`
   6. Install [jest](https://jestjs.io/docs/getting-started) to your cloned directory in command-line using: `npm install --save-dev jest`.
   7. Open up the package.json file and configure a script named test for running Jest as follows:
         `"scripts": {
             "test": "jest"
-        },
-
+        },`
   ###### Installing Nodejs
   
   1. Check if you already have Node.js in command-line by typing `node`.
@@ -76,7 +75,7 @@ A command-line application that generates an HTML page of your team's informatio
   
   1. Open command-line terminal on your local machine.
   2. Navigate to the cloned directory of the application on your local machine using `cd`, if not already there.
-  3. If you haven't already, be sure you followed all installation instructions to install inquirer, inquirer loop, node, and jest dependencies.
+  3. If you haven't already, be sure you followed all [installation](#installation) instructions to install inquirer, inquirer loop, node, and jest dependencies.
   4. Initialize the application in command-line using: `node index.js`.
   5. Answer each question when prompted, and hit the RETURN key.
   5. Upon completion, you will receive a message in the console `Successfully created HTML!` unless an error was encountered, in which case, the error will appear in the console.
@@ -119,10 +118,10 @@ A command-line application that generates an HTML page of your team's informatio
   3. If you haven't already, be sure you followed all [installation](#installation) instructions.
   4. To run the tests for the application, initialize them in command-line using: `npm test`.
 
-    _Example of initializing the tests in command-line._  
+_Example of initializing the tests in command-line._  
   ![Tests initialization command-line]()
 
-    _Example showing the tests having run and passed._  
+_Example showing the tests having run and passed._  
   ![Test success]()
  
   ## TECHNOLOGIES USED
@@ -136,7 +135,7 @@ A command-line application that generates an HTML page of your team's informatio
   - [X] [File System](https://nodejs.org/api/fs.html)
   ## LINKS
   
-  * A [Sample HTML](https://github.com/merewall/Wk9-README-Generator/blob/main/dist/index.html) file created using this application.
+  * A [Sample HTML](https://github.com/merewall/Team-Profile-Generator/blob/main/dist/index.html) file created using this application.
   * The [repository](https://github.com/merewall/Team-Profile-Generator) for this application.
   * A [demo video]() on how to use the application.
   
