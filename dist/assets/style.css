@@ -1,6 +1,14 @@
+:root {
+    --off-white: #F5F5F5;
+    --charcoal: #2a3d45;
+    --light-charcoal: #95b2be;
+    --card: #36656e;
+
+}
+
 body {
     font-family: 'Raleway', sans-serif;
-    color: white;
+    background-color: var(--off-white);
 }
 
 .container {
@@ -10,6 +18,7 @@ body {
 nav {
     height: 150px;
     margin-bottom: 40px;
+    background-color: var(--charcoal);
 }
 
 nav h1 {
@@ -32,6 +41,17 @@ nav h1 {
     margin-left: 0px;
 }
 
+.card {
+    box-shadow: var(--card) 8px 8px 8px;
+    border-radius:5%;
+}
+
+.card .card-content {
+    background-color: #48A0AC;
+    color: var(--off-white);
+    border-radius: 10px 10px 0 0;
+}
+
 .card .card-title {
     font-weight: 600;
     text-align: center;
@@ -43,28 +63,52 @@ nav h1 {
     text-align: center;
 }
 
-.card-action {
+.card .card-action {
     height: 180px;
     font-size: 16px;
+    background-color: var(--card);
+}
+
+.card .card-action:last-child {
+    border-radius: 0 0 10px 10px;
 }
 
 .card-action div {
     padding-top: 10px;
     padding-bottom: 10px;
-    border: solid 1px white;
+    border-left: solid 1px #48A0AC;
+    border-right: solid 1px #48A0AC;
+    border-bottom: solid 1px #48A0AC;
+}
+
+.id {
+    border-top: 1px solid #48A0AC;
+    margin-top: 10px;
 }
 
 .card-action div span {
     padding-right: 8px;
     margin-left: 8px;
+    color: var(--off-white);
 }
 
 .card-action div a {
     margin-left: 8px;
     font-size: 14px;
+    text-decoration: none;
+    
+}
+
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating) {
+    color: #60EFFF;
+    
+}
+
+.label {
+    font-weight: bold;
 }
 
 footer {
     height: 50px;
-    background-color: #ee6e73;
+    background-color: var(--charcoal);
 }
