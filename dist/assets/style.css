@@ -68,11 +68,3 @@ footer {
     height: 50px;
     background-color: #ee6e73;
 }
-
-@media screen and (min-height:0px) {
-
-    .row .col .s12 {
-        width: 100%;
-    }
-
-}
