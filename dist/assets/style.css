@@ -3,6 +3,10 @@
     --charcoal: #2a3d45;
     --light-charcoal: #95b2be;
     --card: #36656e;
+    --mgr: #48A0AC;
+    --engineer: #D2AB99;
+    --intern: #BDBEA9;
+    --link: #4596A2
 
 }
 
@@ -42,14 +46,25 @@ nav h1 {
 }
 
 .card {
-    box-shadow: var(--card) 8px 8px 8px;
+    box-shadow: var(--light-charcoal) 8px 8px 8px;
     border-radius:5%;
 }
 
 .card .card-content {
-    background-color: #48A0AC;
     color: var(--off-white);
     border-radius: 10px 10px 0 0;
+}
+
+.card .mgr {
+    background-color: var(--mgr);
+}
+
+.card .engineer {
+    background-color: var(--engineer);
+}
+
+.card .intern {
+    background-color: var(--intern);
 }
 
 .card .card-title {
@@ -65,31 +80,32 @@ nav h1 {
 
 .card .card-action {
     height: 180px;
-    font-size: 16px;
-    background-color: var(--card);
+    font-size: 18px;
+    background-color: var(--off-white);
 }
 
 .card .card-action:last-child {
     border-radius: 0 0 10px 10px;
+    border: solid .25px var(--card);
 }
 
 .card-action div {
     padding-top: 10px;
     padding-bottom: 10px;
-    border-left: solid 1px #48A0AC;
-    border-right: solid 1px #48A0AC;
-    border-bottom: solid 1px #48A0AC;
+    border-left: solid 1px var(--charcoal);
+    border-right: solid 1px var(--charcoal);
+    border-bottom: solid 1px var(--charcoal);
 }
 
 .id {
-    border-top: 1px solid #48A0AC;
+    border-top: 1px solid var(--charcoal);
     margin-top: 10px;
 }
 
 .card-action div span {
     padding-right: 8px;
     margin-left: 8px;
-    color: var(--off-white);
+    color: var(--card);
 }
 
 .card-action div a {
@@ -100,12 +116,13 @@ nav h1 {
 }
 
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating) {
-    color: #60EFFF;
-    
+    color: var(--link); 
+    font-weight: 600;   
 }
 
-.label {
-    font-weight: bold;
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating):hover {
+    color: var(--engineer); 
+    font-weight: 800;   
 }
 
 footer {
