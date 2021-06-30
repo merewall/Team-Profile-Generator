@@ -129,3 +129,12 @@ footer {
     height: 50px;
     background-color: var(--charcoal);
 }
+
+/* RESPONSIVE */
+
+@media screen and (max-width:500px) {
+    nav h1, 
+    .nav-wrapper span {
+        font-size: 48px;
+    }
+}
