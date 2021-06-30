@@ -91,9 +91,6 @@ _Example of all prompted questions with user's inputs and success message._
 _Examples of validation check and message when user input is empty or invalid._
 ![Validation check]()
 
-_A sample HTML file generated using the application._  
-![Sample HTML]()
-
 _Example of the HTML file generated using the application deployed on a desktop or larger screen._  
 ![Sample HTML]()
 
