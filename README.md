@@ -1,5 +1,5 @@
 # Team-Profile-Generator
-A command-line application that generates an HTML page of your team's information (names, roles, employee IDs, emails, office #, github username, and school) based on user inputs.
+A command-line application that generates an HTML page of your team's basic information (names, roles, employee IDs, emails, office, github username, and school) based on user inputs.
 
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
   
@@ -49,6 +49,7 @@ The following acceptance criteria was used to guide the development of this proj
 - [x] THEN I am prompted to enter the intern’s name, ID, email, and school, and I am taken back to the menu
 - [x] WHEN I decide to finish building my team
 - [x] THEN I exit the application, and the HTML is generated
+
 ## INSTALLATION
 
 1. Fork the [repository](https://github.com/merewall/Team-Profile-Generator) from [GitHub](https://github.com/) to your profile.
@@ -61,6 +62,7 @@ The following acceptance criteria was used to guide the development of this proj
     `"scripts": {
         "test": "jest"
     },`
+    
 ###### Installing Nodejs
 
 1. Check if you already have Node.js in command-line by typing `node`.
@@ -69,7 +71,6 @@ The following acceptance criteria was used to guide the development of this proj
 4. To download Node.js, click [here](https://nodejs.org/en/download/).
 5. After download and installation is complete, restart your command-line terminal and redo step 1 to confirm a successful installation.
 6. After Node.js is on your local machine, return to the [installation](#installation) instructions for this project's application above.
-
 
 ## USAGE
 
@@ -82,23 +83,26 @@ The following acceptance criteria was used to guide the development of this proj
 6. The generated team profile HTML file containing the user inputs will be located in the /dist directory as index.html.
 7. Create a copy of the HTML file and assets folder to place it in your desired directory before running the application again.
 
-_Example of initializing the application in command-line and a prompted question:_
-![Initializing the application]()
+_Examples of initializing the application in command-line and a prompted question:_
+![Initializing the application](https://github.com/merewall/Team-Profile-Generator/blob/main/dist/assets/images/app-initiation.PNG)
+![Welcome message after app initiation](https://github.com/merewall/Team-Profile-Generator/blob/main/dist/assets/images/app-initiation2.PNG)
 
 _Example of all prompted questions with user's inputs and success message._
-![Success message]()
+![Success message](https://github.com/merewall/Team-Profile-Generator/blob/main/dist/assets/images/success-message.PNG)
 
-_Examples of validation check and message when user input is empty or invalid._
-![Validation check]()
+_Examples of validation checks and messages when user input is empty or invalid._
+![Empty input validation check](https://github.com/merewall/Team-Profile-Generator/blob/main/dist/assets/images/validation-message.PNG)
+![Email validation check](https://github.com/merewall/Team-Profile-Generator/blob/main/dist/assets/images/email-validation.PNG)
+![Number validation check](https://github.com/merewall/Team-Profile-Generator/blob/main/dist/assets/images/number-validation.PNG)
 
-_Example of the HTML file generated using the application deployed on a desktop or larger screen._  
-![Sample HTML]()
+_Example of the HTML file generated using the application, deployed on a desktop or larger screen._  
+![Sample HTML](https://github.com/merewall/Team-Profile-Generator/blob/main/dist/assets/images/profile-desktop.PNG)
 
-_Example of the HTML file generated using the application deployed on a tablet or medium screen._  
-![Sample HTML]()
+_Example of the HTML file generated using the application, deployed on a tablet or medium screen._  
+![Sample HTML](https://github.com/merewall/Team-Profile-Generator/blob/main/dist/assets/images/profile-tablet.PNG)
 
-_Examples of the HTML file generated using the application deployed on a mobile device or small screen._  
-![Sample HTML]()
+_Examples of the HTML file generated using the application, deployed on a mobile device or small screen._  
+![Sample HTML](https://github.com/merewall/Team-Profile-Generator/blob/main/dist/assets/images/profile-mobile.PNG)
 
 ## LICENSE
 
@@ -116,10 +120,10 @@ If you'd like to contribute to the project, please create a pull request on a ne
 4. To run the tests for the application, initialize them in command-line using: `npm test`.
 
 _Example of initializing the tests in command-line._  
-![Tests initialization command-line]()
+![Tests initialization command-line](https://github.com/merewall/Team-Profile-Generator/blob/main/dist/assets/images/test-initiation.PNG)
 
 _Example showing the tests having run and passed._  
-![Test success]()
+![Test success](https://github.com/merewall/Team-Profile-Generator/blob/main/dist/assets/images/test-success.PNG)
 
 ## TECHNOLOGIES USED
 
@@ -134,6 +138,7 @@ _Example showing the tests having run and passed._
 
 * A [Sample HTML](https://github.com/merewall/Team-Profile-Generator/blob/main/dist/index.html) file created using this application.
 * The [repository](https://github.com/merewall/Team-Profile-Generator) for this application.
+* A [deployed Team Profile](https://merewall.github.io/Team-Profile-Generator/) created using this application.
 * A [demo video]() on how to use the application.
 
 ## QUESTIONS
