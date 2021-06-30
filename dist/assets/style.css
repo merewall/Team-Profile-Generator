@@ -133,8 +133,7 @@ footer {
 /* RESPONSIVE */
 
 @media screen and (max-width:500px) {
-    nav h1, 
     .nav-wrapper span {
-        font-size: 48px;
+        display: none;
     }
 }
