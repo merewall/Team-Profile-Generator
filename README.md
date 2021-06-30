@@ -139,7 +139,7 @@ _Example showing the tests having run and passed._
 * A [Sample HTML](https://github.com/merewall/Team-Profile-Generator/blob/main/dist/index.html) file created using this application.
 * The [repository](https://github.com/merewall/Team-Profile-Generator) for this application.
 * A [deployed Team Profile](https://merewall.github.io/Team-Profile-Generator/) created using this application.
-* A [demo video]() on how to use the application.
+* A [demo video](https://drive.google.com/file/d/18TCqShiaht9278PrsiFTS6VLX-26dq9z/view) on how to use the application.
 
 ## QUESTIONS
 
