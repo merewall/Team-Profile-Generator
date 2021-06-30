@@ -103,7 +103,7 @@ const questions = [
             {
                 type: 'list',
                 name: 'role',
-                message: 'Choose a role to add to your team or complete your team:',
+                message: 'Choose a role to add to your team:',
                 choices: ['Engineer', 'Intern'],
               },
               // Prompt for employee name
@@ -125,7 +125,7 @@ const questions = [
               {
                   type: 'number',
                   name: 'id',
-                  message: "Enter the employee's ID number:",
+                  message: "Enter employee's ID number:",
                   when: (answers) => answers.role === 'Engineer' || answers.role === 'Intern',
                   validate: (idInput) => {
                       if (!idInput) {
@@ -151,7 +151,7 @@ const questions = [
               {
                   type: 'input',
                   name: 'email',
-                  message: "Enter the employee's email address:",
+                  message: "Enter employee's email address:",
                   when: (answers) => answers.role === 'Engineer' || answers.role === 'Intern',
                   validate: (emailInput) => {
                     if (!emailInput) {
@@ -199,13 +199,6 @@ const questions = [
     },
 ];
 
-// Function to write HTML file
-// function writeToFile(fileName, data) {
-//     fs.writeFile(fileName, data, (err) =>
-//         err ? console.error("\x1b[31m", err) : console.log('Successfully created README.md!')
-//     );
-// }
-
 // Function to initialize app
 function init() {
     console.log("\n--------------------------------------------\nWELCOME!\nLet's build your team profile page! \n--------------------------------------------\n")
@@ -251,7 +244,7 @@ function init() {
             generateHTML.generateEndHTML()
             
             fs.writeFile('./dist/index.html', generateHTML.generateHTML(), (err) => {
-                err ? console.error(err) : console.log('Successfully created HTML!');
+                err ? console.error(err) : console.log("\x1b[32m",'Successfully created HTML!');
             });            
         })
     }, 2500);
