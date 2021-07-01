@@ -1,7 +1,9 @@
+// Require the Employee class and Engineer subclass
 const Engineer = require("../lib/engineer");
 const Employee = require("../lib/employee")
 
 describe("Engineer", () => {
+    // Tests for initializing an instance of the Engineer class
     describe("Initialization", () => {
 
         it("should return an object that is an instance of Employee", () => {
@@ -37,6 +39,8 @@ describe("Engineer", () => {
         });
 
     });
+
+    // Tests for using the methods of Engineer class
 
     describe("getGitHub method of Engineer class", () => {
 

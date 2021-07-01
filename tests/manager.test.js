@@ -1,7 +1,9 @@
+// Require the Employee class and Manager subclass
 const Manager = require("../lib/manager")
 const Employee = require("../lib/employee");
 
 describe("Manager", () => {
+    // Tests for initializing an instance of the Manager class
     describe("Initialization", () => {
 
         it("should return an object that is an instance of Employee", () => {
@@ -37,6 +39,8 @@ describe("Manager", () => {
         });
 
     });
+
+    // Tests for using the methods of Manager class
 
     describe("getOffice method of Manager class", () => {
 

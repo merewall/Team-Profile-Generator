@@ -1,17 +1,17 @@
-// Include packages and files needed for this application: inquirer, fs, and the generateMarkdown.js file
+// Require packages and files needed for this application: inquirer, fs
+// Also used the inquirer-looper package found through research here: https://www.npmjs.com/package/inquirer-loop
 const inquirer = require('inquirer');
-// https://www.npmjs.com/package/inquirer-loop
 inquirer.registerPrompt("loop", require("inquirer-loop")(inquirer));
-
 const fs = require('fs');
 
+// Require the Engineer, Intern, and Manager classes, as well as functions in generateHTML
 const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern');
 const Manager = require('./lib/manager');
 const generateHTML = require('./lib/generateHTML');
 
 
-// An array of questions that will render in the command line for the user's input
+// An array of questions that will render in command line for the user's input
 const questions = [
     // Prompt for Team Manager
     {
@@ -84,6 +84,7 @@ const questions = [
             return true
         }
     },
+        // remove NaN from input line such that user can enter new input
         filter: (officeInput) => {
             if (isNaN(officeInput)) {
             return '' 
@@ -201,48 +202,59 @@ const questions = [
 
 // Function to initialize app
 function init() {
+    // Give a welcome message
     console.log("\n--------------------------------------------\nWELCOME!\nLet's build your team profile page! \n--------------------------------------------\n")
     
+    // After 1 second, provide some instructions
     setTimeout(function(){
         console.log("Please answer the questions followed by the ENTER key. \n");
     }, 1000);
     
     // Use the questions to prompt the user in command line 2.5 sec after welcome message
-    
     setTimeout(function() {
         inquirer.prompt(questions)
         // Use the user's answers to generate the HTML and output it to a new directory
         .then((answers) => {
            
+            // variables for the manager's information and the array of other employees
             const manager = answers.mgrName;
             const managerID = answers.mgrID;
             const managerEmail = answers.mgrEmail;
             const managerOffice = answers.mgrOffice;
+            const employeeArray = answers.newEmployee
 
+            // generate a new instance of Manager from the user input's for the manager...
             const mgr = new Manager (manager ,managerID, managerEmail, managerOffice)
             
+            // and create the HTML string for a manager card using that manager instance
             generateHTML.generateMgrHTML(mgr);
 
             // check if there are employees other than the manager added
-            if(answers.newEmployee) {
+            if(employeeArray) {
 
-                for (i = 0; i < answers.newEmployee.length; i++) {
-                    if(answers.newEmployee[i].role === "Engineer") {
-                        let eng = new Engineer (answers.newEmployee[i].name, answers.newEmployee[i].id, answers.newEmployee[i].email, answers.newEmployee[i].github);
-                        
-                        generateHTML.generateEngCards(eng)
+                // for each other employee...
+                for (i = 0; i < employeeArray.length; i++) {
+                    // check if their role is Engineer...
+                    if(employeeArray[i].role === "Engineer") {
+                        // ...and if so, create a new instance of the Engineer class
+                        let eng = new Engineer (employeeArray[i].name, employeeArray[i].id, employeeArray[i].email, employeeArray[i].github);
+                        // and create the HTML string for an engineer card using that engineer instance
+                        generateHTML.generateEngHTML(eng)
                         
                     } else {
-                        let int = new Intern (answers.newEmployee[i].name, answers.newEmployee[i].id, answers.newEmployee[i].email, answers.newEmployee[i].school);
-                       
-                        generateHTML.generateIntCards(int)
+                        // ...otherwise, (because there is only 2 choices: engineer or intern), create a new instance of the Intern class
+                        let int = new Intern (employeeArray[i].name, employeeArray[i].id, employeeArray[i].email, employeeArray[i].school);
+                       // and create the HTML string for an intern card using that intern instance
+                        generateHTML.generateIntHTML(int)
                     }
                 };
                 
-            };     
+            }; 
 
+            // add the ending HTML to the HTML string
             generateHTML.generateEndHTML()
             
+            // create a HTML file in the dist directory, using the generateHTML function to join the array of HTML strings
             fs.writeFile('./dist/index.html', generateHTML.generateHTML(), (err) => {
                 err ? console.error(err) : console.log("\x1b[32m",'Successfully created HTML!');
             });            

@@ -1,7 +1,11 @@
+// Require the Employee class
 const Employee = require("../lib/employee");
 
+
 describe("Employee class", () => {
+    // Tests for initializing an instance of the Employee class
     describe("Initialization", () => {
+
         it("should return an object containing properties for 'name', 'id', 'email', and 'role' properties when called with the 'new' keyword", () => {
             const obj = new Employee();
 
@@ -28,6 +32,8 @@ describe("Employee class", () => {
 
     });
 
+    // Tests for using the methods of Employee class
+    
     describe("getName method of Employee class", () => {
 
         it("should return the value of the 'name' property of that instance of Employee", () => {

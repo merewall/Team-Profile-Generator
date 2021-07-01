@@ -1,7 +1,9 @@
+// Require the Employee class and Intern subclass
 const Intern = require("../lib/intern");
 const Employee = require("../lib/employee");
 
 describe("Intern", () => {
+    // Tests for initializing an instance of the Intern class
     describe("Initialization", () => {
 
         it("should return an object that is an instance of Employee", () => {
@@ -37,6 +39,8 @@ describe("Intern", () => {
         });
 
     });
+
+    // Tests for using the methods of Intern class
 
     describe("getSchool", () => {
 
